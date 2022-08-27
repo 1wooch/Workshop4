@@ -5,21 +5,20 @@
 
 <div class="wrapper fadeInDown">
   <div id="formContent">
-    <!-- Tabs Titles -->
 
-    <!-- Icon 
-    <div class="fadeIn first">
-     <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
-    </div>
--->
-    <!-- Login Form -->
-    <h1></h1>
     <form>
-      <input type="text" [(ngModel)]="username" id="login" class="fadeIn second" name="id" placeholder="id">
-      <input type="text"[(ngModel)]="password" id="password" class="fadeIn third" name="login" placeholder="password">
+      Username by email:<br>
+      <input type="text" [(ngModel)]="userpwd.username" id="login" class="fadeIn second" name="id" placeholder="id">
+      User password:<br>
+      <input type="text"[(ngModel)]="userpwd.pwd" id="password" class="fadeIn third" name="login" placeholder="password">
       <!--<input type="submit" class="fadeIn fourth" value="Log In">
       -->
-      <button (click)="itemClicked()"> submit </button>
+      Birthdate:<br>
+      <input type="date"[(ngModel)]="userobj.userbirthdate">
+      Age:<br>
+      <input type="number"[(ngModel)]="userobj.userage">
+
+      <button class="log_but" value="Login" id="login" (click)="loginfunc()"> submit </button>
 
     </form>
 
