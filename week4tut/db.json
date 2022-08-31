@@ -1,0 +1,32 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  },
+  "LoginInfo":
+  [
+    {"email":"wonwoo@edu.au","password":991106},
+    {"email":"test@edu.au","password":1111},
+    {"email":"test2@edu.au","password":2222}
+  ],
+  "UserInfo":[
+    {"email":"wonwoo@edu.au","password":991106,"Age":22,"birthdate":"1999-11-06","Username":"Won","valid":true},
+    {"email":"test@edu.au","password":1111},
+    {"email":"test2@edu.au","password":2222}
+  ]
+
+  
+}

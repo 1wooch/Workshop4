@@ -18,6 +18,10 @@
     "importHelpers": true,
     "target": "es2020",
     "module": "es2020",
+    //added
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    //added-finish
     "lib": [
       "es2020",
       "dom"

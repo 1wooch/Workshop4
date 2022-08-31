@@ -6,22 +6,33 @@
 <div class="wrapper fadeInDown">
   <div id="formContent">
 
+
+    <!--
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      Username by email:<br>l
+      <input formControlName="email" type="text" id="login" class="fadeIn second" name="id" placeholder="id">
+      User password:<br>
+      <input formControlName="password" type="text" id="password" class="fadeIn third" name="login" placeholder="password">
+      <button class="log_but" value="Login" id="login" > submit </button>
+
+    </form>
+  -->
+    
     <form>
       Username by email:<br>
       <input type="text" [(ngModel)]="userpwd.username" id="login" class="fadeIn second" name="id" placeholder="id">
       User password:<br>
       <input type="text"[(ngModel)]="userpwd.pwd" id="password" class="fadeIn third" name="login" placeholder="password">
-      <!--<input type="submit" class="fadeIn fourth" value="Log In">
-      -->
+   
+      
       Birthdate:<br>
-      <input type="date"[(ngModel)]="userobj.userbirthdate">
+      <input type="date"[(ngModel)]="userobj.userbirthday">
       Age:<br>
       <input type="number"[(ngModel)]="userobj.userage">
-
+      
       <button class="log_but" value="Login" id="login" (click)="loginfunc()"> submit </button>
 
     </form>
-
     <!-- Remind Passowrd -->
     <div id="formFooter">
       <a class="underlineHover" href="#">Forgot Password?</a>

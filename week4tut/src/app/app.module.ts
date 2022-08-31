@@ -9,7 +9,10 @@ import { Router, RouterModule, Routes } from '@angular/router';
 import { RouterTestingModule } from "@angular/router/testing";
 import { AppRougingModule } from './app-rouging.module';
 
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { HttpClientModule,HttpClient } from '@angular/common/http';
+
 
 
 const routes: Routes=[
@@ -32,9 +35,10 @@ const routes: Routes=[
     AppRougingModule,
     RouterModule.forRoot(routes),
     FormsModule,
-    
+    HttpClientModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [HttpClientModule],
   bootstrap: [AppComponent],
   exports:[RouterModule]
 })

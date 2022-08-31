@@ -4,19 +4,20 @@ const httpOptions={
   headers:new HttpHeaders({'Content-Type':'application/json'})
 };
 
+import{FormBuilder,FormGroup}from "@angular/forms"
 
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
-import {Userpwd} from '../userpwd';
-import {Userobj} from '../userobj';
-import {USERPWDS} from '../mock-users';
+import {Userpwd} from '../../userpwd.model';
+import {Userobj} from '../../userobj.model';
+//import {USERPWDS} from '../mock-users';
 
 
 
 
-const BACKEND_URL='https://localhost:4200';
+const BACKEND_URL='http://localhost:3000';
 
 
 @Component({
@@ -26,14 +27,13 @@ const BACKEND_URL='https://localhost:4200';
 })
 
 
-
-
-
 export class LoginComponent implements OnInit {
-  userpwd:Userpwd={username:'wonwoo@griffith.edu.au',pwd:'1106'};
-  userobj:Userobj={userid:1,username:this.userpwd.username,userbirthday:null,userage:100};
+  userpwd:Userpwd={username:'wonwoo@griffith.edu.au',pwd:'99106'};
+  userobj:Userobj={userid:1,username:this.userpwd.username,userbirthday:Date.prototype.getDay(),userage:100};
   constructor(private router:Router,private httpClient:HttpClient){}
   ngOnInit(){}
+
+
   public loginfunc(){
     this.httpClient.post(BACKEND_URL+'/login',this.userpwd,httpOptions)
     .subscribe((data:any)=>{
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
       if(data.ok){
         sessionStorage.setItem('userid',this.userobj.userid.toString());
         sessionStorage.setItem('username',this.userobj.username);
-        sessionStorage.setItem('userbirthdate',this.userobj.userbirthdate);
+        sessionStorage.setItem('userbirthdate',this.userobj.userbirthday.toString());
         sessionStorage.setItem('userage',this.userobj.userage.toString());
         this.httpClient.post<Userobj[]>(BACKEND_URL+'/loginafter',this.userobj,httpOptions)
         .subscribe((m:any)=>{console.log(m[0]);});
@@ -52,39 +52,100 @@ export class LoginComponent implements OnInit {
     });
   }
 }
-//   username="";
-//   password="";
-//   Userlist=[{id:"wonwoo@edu.au",user_password:"991106"},{id:"test@edu.au",user_password:"1111"},{id:"test2@edu.au",user_password:"2222"}];
-//   //Userlist=new Dictionary();
 
-//   constructor(private route :Router) { }
+
+
+// export class LoginComponent implements OnInit{
+
+//   public loginForm! : FormGroup
+
+
+
+//   constructor(private formBuilder:FormBuilder, private http : HttpClient,private router:Router){}
 
 //   ngOnInit(): void {
+//     this.loginForm=this.formBuilder.group({
+//       email:[''],
+//       password:['']
+//     })
 //   }
-//   itemClicked(){
-//     //alert("Hi");
-//     //alert(this.username);
-//     //alert(this.password);
-//     for (let i=0; i<this.Userlist.length; i++){
-//       if(this.Userlist[i]['id']==this.username){
-//       //alert(this.Userlist[i]['id']);
-//       //alert(true);
-//           if(this.Userlist[i]['user_password']==this.password){
-//             alert("Login Successful");
-//             this.route.navigateByUrl('/account');
-//             break;
-//           }
-//           else{
-//             alert("Wrong Password");
-//             break;
-//           }
+//   login(){
+//     this.http.get<any>(BACKEND_URL)
+//     .subscribe(res=>{
+//       console.log(this.loginForm.value.email);
+//       const user = res.find((a:any)=>{
+//         console.log(a.email);
+        
+//           return a.email===this.loginForm.value.email && a.password===this.loginForm.value.password 
+//       });
+//       if(user){
+//         alert("Login SUccess");
+//         this.loginForm.reset();
+//         this.router.navigate(['account'])
+//       }else{
+//         alert("user not found");
 //       }
-//       else{
-//         alert(
-//           "Check the ID and Password"
-//         );
-//       }
+      
+//   },err=>{
+//         alert("something went wrong");
+//   })
+//   }
+// }
+
+
+
+
+
+
+
+
+
+// export class LoginComponent implements OnInit {
+  
+//   username:string ='';
+//   password:string = '';
+//   role: string = '';
+//   constructor(private router:Router,private http:HttpClient) { }
+
+//   ngOnInit() {
+//     if(sessionStorage.getItem("username") != null){
+//       this.router.navigateByUrl('/account')
 //     }
 //   }
 
+//   public loginUser(): void {
+  
+//     console.log(this.username);//working
+//     console.log(this.password);//working
+//     if (this.username === "" && this.password === "") {
+//         alert("You must enter an email and a username!");
+//         return;
+//     } else if (typeof(Storage) !== "undefined") {
+//         const req =this.http.post(BACKEND_URL, {
+//                 username: this.username,
+//                 password: this.password,
+//             }).subscribe((data:any)=>{
+//                     if (data.success) {
+//                         alert("Login Successful!");
+//                         this.router.navigateByUrl('/account');
+//                         sessionStorage.setItem("username", data.username);
+//                         sessionStorage.setItem("password", data.password);
+//                         sessionStorage.setItem("role", data.role);
+//                     } else {
+//                         alert('Username/Email incorrect!')
+//                     }
+//                 },
+//                 err => {
+//                     alert('An error has occured trying to create user.')
+//                     console.log("Error occured");
+//                     return;
+//                 });
+//     } else {
+//         console.log('Local Storage Undefined');
+//         alert("Error: Local Storage Undefined!")
+//         return;
+//     }
 // }
+// }
+
+
