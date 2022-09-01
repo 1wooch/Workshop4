@@ -29,7 +29,7 @@ module.exports=function(req,res){
                     }
                     //res.send({"ok":true});
                     res.send({"ok":true,
-                    username:userArray.users[i]["email"],
+                    email:userArray.users[i]["email"],
                     pwd:userArray.users[i]["pwd"],
                     birthdate:userArray.users[i]["birthdate"],
                     age:userArray.users[i]["age"],

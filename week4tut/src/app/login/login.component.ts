@@ -49,7 +49,9 @@ export class LoginComponent implements OnInit{
       //console.log(data);
             if(data.ok){
               alert("success");
-              //console.log(data.age); //working 22
+              console.log(data.age); //working 22
+              console.log(data.email);
+              console.log(data.birthdate)
               sessionStorage.setItem('username',data.username);
               sessionStorage.setItem('email',data.email);
               sessionStorage.setItem('age',data.age);
