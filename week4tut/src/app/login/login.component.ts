@@ -4,14 +4,16 @@ const httpOptions={
   headers:new HttpHeaders({'Content-Type':'application/json'})
 };
 
+import { LoginService,User } from 'src/login.service';
+
 import{FormBuilder,FormGroup}from "@angular/forms"
 
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
 
-import {Userpwd} from '../../userpwd.model';
-import {Userobj} from '../../userobj.model';
+//import {Userpwd} from '../userpwd.json';
+//import {Userobj} from '../../userobj.model';
 //import {USERPWDS} from '../mock-users';
 
 
@@ -27,31 +29,66 @@ const BACKEND_URL='http://localhost:3000';
 })
 
 
-export class LoginComponent implements OnInit {
-  userpwd:Userpwd={username:'wonwoo@griffith.edu.au',pwd:'99106'};
-  userobj:Userobj={userid:1,username:this.userpwd.username,userbirthday:Date.prototype.getDay(),userage:100};
-  constructor(private router:Router,private httpClient:HttpClient){}
+
+
+export class LoginComponent implements OnInit{
+  form:any={
+    username:null,
+    password:null
+  };
+  userdata:any;
+  role:any;
+
+  constructor(private httpClient:HttpClient){}
   ngOnInit(){}
-
-
   public loginfunc(){
-    this.httpClient.post(BACKEND_URL+'/login',this.userpwd,httpOptions)
+    const{username,password}=this.form;
+    //console.log(username,password)
+    this.httpClient.post(BACKEND_URL+'/login',{username:username,pwd:password})
     .subscribe((data:any)=>{
-      alert(JSON.stringify(this.userpwd));
-      if(data.ok){
-        sessionStorage.setItem('userid',this.userobj.userid.toString());
-        sessionStorage.setItem('username',this.userobj.username);
-        sessionStorage.setItem('userbirthdate',this.userobj.userbirthday.toString());
-        sessionStorage.setItem('userage',this.userobj.userage.toString());
-        this.httpClient.post<Userobj[]>(BACKEND_URL+'/loginafter',this.userobj,httpOptions)
-        .subscribe((m:any)=>{console.log(m[0]);});
-        this.router.navigateByUrl('account');
-      }else{
-        alert('Sorry username or password is wrong');
-      }
-    });
+      //console.log(data);
+            if(data.ok){
+              alert("success");
+              //console.log(data.age); //working 22
+              sessionStorage.setItem('username',data.username);
+              sessionStorage.setItem('email',data.email);
+              sessionStorage.setItem('age',data.age);
+              sessionStorage.setItem('role',data.role);
+              sessionStorage.setItem('birthdate',data.username);
+
+
+            }else{
+              alert('Sorry username or password is wrong');
+            }
+          });
   }
 }
+
+// export class LoginComponent implements OnInit {
+//   userpwd:Userpwd={username:'wonwoo@griffith.edu.au',pwd:'99106'};
+//   userobj:Userobj={userid:1,username:this.userpwd.username,userbirthday:Date.prototype.getDay(),userage:100};
+//   constructor(private router:Router,private httpClient:HttpClient){}
+//   ngOnInit(){}
+
+
+//   public loginfunc(){
+//     this.httpClient.post(BACKEND_URL+'/login',this.userpwd,httpOptions)
+//     .subscribe((data:any)=>{
+//       alert(JSON.stringify(this.userpwd));
+//       if(data.ok){
+//         sessionStorage.setItem('userid',this.userobj.userid.toString());
+//         sessionStorage.setItem('username',this.userobj.username);
+//         sessionStorage.setItem('userbirthdate',this.userobj.userbirthday.toString());
+//         sessionStorage.setItem('userage',this.userobj.userage.toString());
+//         this.httpClient.post<Userobj[]>(BACKEND_URL+'/loginafter',this.userobj,httpOptions)
+//         .subscribe((m:any)=>{console.log(m[0]);});
+//         this.router.navigateByUrl('account');
+//       }else{
+//         alert('Sorry username or password is wrong');
+//       }
+//     });
+//   }
+// }
 
 
 
@@ -149,3 +186,39 @@ export class LoginComponent implements OnInit {
 // }
 
 
+
+// export class LoginComponent implements OnInit {
+
+//   inputUsername:any;
+//   inputPassword:any;
+  
+  
+
+
+//   constructor(private loginService:LoginService, private router:Router) { }
+//   ngOnInit(){}
+
+//   public submitClicked(){
+//     this.loginService.login(this.inputUsername,this.inputPassword)
+//     .subscribe(data=>{
+//       console.log(data);
+//       if(data.valid===true){
+//         localStorage.setItem('username',JSON.stringify(data.username));
+//         localStorage.setItem('role',JSON.stringify(data.role));
+//         localStorage.setItem('groupAdminRole',JSON.stringify(data.groupAdminRole));
+//         this.router.navigateByUrl('/account');
+//         console.log("y");
+
+//       }else if(data.valid===false){
+//         console.log( "Password Incorrect");        
+//       }else if (data.valid===null){
+//         console.log("user not found");
+
+//       }
+//     }
+
+//     )
+//   }
+
+
+// }

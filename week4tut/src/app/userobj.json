@@ -1,0 +1,13 @@
+{
+    "userobj":[
+        {
+            "username":"wwc@edu.au",
+            "userpwd":"661130",
+            "age":22,
+            "email":"wwcemail@edu.au",
+            "valid":null,
+            "birthdate":"1999-11-06"
+
+        }
+    ]
+}

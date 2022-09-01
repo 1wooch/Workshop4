@@ -11,8 +11,8 @@ export class AccountComponent implements OnInit {
   userid=sessionStorage.getItem('userid');
   username=sessionStorage.getItem('username');
   birthdate=sessionStorage.getItem('userbirthdate');
-  userage=sessionStorage.getItem('userage');
-  
+  age=sessionStorage.getItem('age');
+  email=sessionStorage.getItem('email');
   constructor() { }
 
   ngOnInit(){

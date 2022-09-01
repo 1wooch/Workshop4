@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
 
 
-app.use(express.static(path.join(__dirname,'../dist/week4tut')));
+app.use(express.static(__dirname+'/../dist/week4tut'));
 console.log(__dirname);
 
 const http = require('http').Server(app);

@@ -1,0 +1,31 @@
+{
+    "users": [
+        {
+          "username": "wwc",
+          "role": "super",
+          "email": "wwc@gmail.com",
+          "pwd":"661130",
+          "birthdate":"1999-11-06",
+          "age":22
+          
+        },
+        {
+          "username": "Group Admin",
+          "role": "groupadmin",
+          "email": "groupadmin@gmail.com",
+          "pwd":"661130",
+          "birthdate":"1909-12-25",
+          "age":109
+
+        },
+        {
+          "username": "User 1",
+          "role": "user",
+          "email": "user@email.com",
+          "pwd":"661130",
+          "birthdate":"2002-01-06",
+          "age":20
+
+        }
+      ]
+}
