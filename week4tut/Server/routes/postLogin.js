@@ -34,7 +34,10 @@ module.exports=function(req,res){
                     birthdate:userArray.users[i]["birthdate"],
                     age:userArray.users[i]["age"],
                     role:userArray.users[i]["role"],
-                    username:userArray.users[i]["username"]});
+                    username:userArray.users[i]["username"],
+                    pwd:userArray.users[i]["pwd"],
+
+                });
                     // .json({
                     //     username:userArray.users[i]["email"],
                     //     pwd:userArray.users[i]["pwd"],
