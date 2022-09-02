@@ -41,16 +41,20 @@ module.exports=function(req,res){
     fs.readFile('./Data/users.json','utf8',function(error,data){
             const obj=JSON.parse(data);
 
-
+            found=false
 
             for (let i=0; i<obj.users.length; i++){
                 if(email==obj.users[i]['email']){
                     obj.users[i]=inputdata;
-                    console.log("1"+obj.users[i]);
+                    //console.log("1"+obj.users[i]);
+                    found=true;
+                    
                     break;
-                }else{
-                    obj.users.push(inputdata);
                 }
+            }
+            if(found==false){
+                obj.users.push(inputdata);
+
             }
 
 
